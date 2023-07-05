@@ -19,31 +19,32 @@ public class EnterIngredient : MonoBehaviour
     public GameObject burger;
     public GameObject middleOfTray;
     AudioSource audioData;
+    AudioSource game;
     public Text done;
+    public static bool finished;
 
    
         // Start is called before the first frame update
         void Start()
     {
             audioData = GetComponent<AudioSource>();
-         
-            debugtext.text = "started";
+
 
         burger.SetActive(false);
+        game.Play(0);
 
-  
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        void Update()
-        {
+      
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Application.Quit();
             }
-        }
+       
     }
     IEnumerator HideUITextAfterDelay(float delay)
     {
@@ -132,7 +133,7 @@ public class EnterIngredient : MonoBehaviour
             burger.SetActive(true);
             recipe.text = "";
             recipetitle.text = "YOU DID IT";
-
+            finished = true;
             QuitGame(5f);
 
         }
